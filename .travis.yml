@@ -1,0 +1,10 @@
+---
+
+language: minimal
+
+services:
+  - docker
+
+script:
+  - docker build -t fragsoc/riskofrain2:vanilla .
+  - docker built -t fragsoc/riskofrain2:modded -f bepapi.Dockerfile .
