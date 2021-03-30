@@ -1,14 +1,18 @@
-FROM steamcmd/steamcmd AS steambuild
+FROM rustagainshell/rash AS rash
+FROM steamcmd/steamcmd
 MAINTAINER Laura Demkowicz-Duffy <fragsoc@yusu.org>
 
 ARG APPID=1180760
 ARG STEAM_BETAS
 ARG UID=999
 ARG GID=999
+ARG GAME_PORT=27015
+ARG STEAM_PORT=27016
 
-ENV CONFIG_LOC="/config"
 ENV INSTALL_LOC="/ror2"
 ENV HOME=${INSTALL_LOC}
+ENV GAME_PORT=27015
+ENV STEAM_PORT=27016
 
 USER root
 WORKDIR /
@@ -18,8 +22,8 @@ RUN apt-get update && \
     groupadd -g $GID ror2 && \
     useradd -m -s /bin/false -u $UID -g $GID ror2 && \
     # Setup directory structure and permissions
-    mkdir -p $CONFIG_LOC $INSTALL_LOC && \
-    chown -R ror2:ror2 $INSTALL_LOC $CONFIG_LOC
+    mkdir -p $INSTALL_LOC && \
+    chown -R ror2:ror2 $INSTALL_LOC
 
 USER ror2
 
@@ -29,12 +33,14 @@ RUN steamcmd \
         +force_install_dir $INSTALL_LOC \
         +@sSteamCmdForcePlatformType windows \
         +app_update $APPID $STEAM_BETAS validate \
-        +quit && \
-    ln -s $CONFIG_LOC/server.cfg "${INSTALL_LOC}/Risk of Rain 2_Data/Config/server.cfg"
-COPY --chown=ror2 server.cfg $CONFIG_LOC/server.cfg
+        +quit
+
+# Config setup
+COPY --from=rash /bin/rash /usr/bin/rash
+COPY server.cfg.j2 /server.cfg
+COPY docker-entrypoint.rh /docker-entrypoint.rh
 
 # I/O
-VOLUME $CONFIG_LOC
-EXPOSE 27015/udp 27016/udp
+EXPOSE $GAME_PORT/udp $STEAM_PORT/udp $GAME_PORT $STEAM_PORT
 WORKDIR $INSTALL_LOC
-ENTRYPOINT ["xvfb-run", "wine", "./Risk of Rain 2.exe"]
+ENTRYPOINT ["/docker-entrypoint.rh"]

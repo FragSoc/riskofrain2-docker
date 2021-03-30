@@ -1,0 +1,12 @@
+#!/usr/bin/rash
+# vim: set ft=yaml:
+
+- template:
+    src: "/server.cfg"
+    dest: "/ror2/Risk of Rain 2_Data/Config/server.cfg"
+
+- command:
+    argv:
+      - xvfb
+      - wine
+      - "./Risk of Rain 2.exe"
