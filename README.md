@@ -6,14 +6,14 @@
 
 # Usage
 
-## Quickstart
+### Quickstart
 
 ```bash
 $ docker build -t fragsoc/riskofrain2 .
 $ docker run -p 27015:27105/udp -p 27016:27016/udp fragsoc/riskofrain2
 ```
 
-## Building
+### Building
 
 The image takes several build args, passed with `--build-arg` to the `docker build` command:
 
@@ -26,7 +26,7 @@ Argument Key | Default Value | Description
 `GAME_PORT` | `27015` | The port to assign and expose for the game server
 `STEAM_PORT` | `27016` | The port to assign and expose for the steam service
 
-## Running
+### Running
 
 The container requires 2 ports, `27015` and `27016` (or whatever you overrode them to in the build args).
 
@@ -38,7 +38,7 @@ Variable Key | Default Value | Description
 `GAME_PASSWORD` | `letmein` | The password to connect to the server
 `MAX_PLAYERS` | `4` | The maximum allowed number of players in the server
 
-# Modded Variant
+## Modded Variant
 
 A variant of the server with [BepInExPack]() and [R2API]() is available by building using `bepapi.Dockerfile`.
 This variant comes with one volume, `/mods`, where you should place mod files in order to load them into the game.
