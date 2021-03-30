@@ -41,6 +41,6 @@ COPY server.cfg.j2 /server.cfg
 COPY docker-entrypoint.rh /docker-entrypoint.rh
 
 # I/O
-EXPOSE $GAME_PORT/udp $STEAM_PORT/udp $GAME_PORT $STEAM_PORT
+EXPOSE $GAME_PORT/udp $STEAM_PORT/udp
 WORKDIR $INSTALL_LOC
 ENTRYPOINT ["rash", "/docker-entrypoint.rh"]
