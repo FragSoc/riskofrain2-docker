@@ -1,4 +1,5 @@
 FROM debian:stretch-slim AS curl
+MAINTAINER Laura Demkowicz-Duffy <fragsoc@yusu.org>
 
 RUN apt-get update && \
     apt-get install -y unzip curl
@@ -17,9 +18,20 @@ RUN mkdir -p bepinexpack r2api && \
 
 FROM fragsoc/riskofrain2:vanilla
 
-COPY --from=curl /tmp/bepinex/BepInExPack/BepInEx $INSTALL_LOC/BepInEx
-COPY --from=curl /tmp/bepinex/BepInExPack/doorstop_config.ini $INSTALL_LOC
-COPY --from=curl /tmp/bepinex/BepInExPack/winhttp.dll $INSTALL_LOC
+ENV MODS_LOC="/plugins"
 
-COPY --from=curl /tmp/r2api/plugins $INSTALL_LOC/BepInEx/plugins/
-COPY --from=curl /tmp/r2api/monomod $INSTALL_LOC/BepInEx/monomod/
+USER root
+RUN mkdir -p $MODS_LOC && \
+    chown -R ror2:ror2 $MODS_LOC
+
+USER ror2
+COPY --from=curl --chown=ror2 /tmp/bepinex/BepInExPack/BepInEx $INSTALL_LOC/BepInEx
+COPY --from=curl --chown=ror2 /tmp/bepinex/BepInExPack/doorstop_config.ini $INSTALL_LOC
+COPY --from=curl --chown=ror2 /tmp/bepinex/BepInExPack/winhttp.dll $INSTALL_LOC
+RUN rm -r $INSTALL_LOC/BepInEx/plugins && \
+    ln -s $MODS_LOC $INSTALL_LOC/BepInEx/plugins
+
+COPY --from=curl --chown=ror2 /tmp/r2api/plugins $MODS_LOC/
+COPY --from=curl --chown=ror2 /tmp/r2api/monomod $INSTALL_LOC/BepInEx/monomod/
+
+VOLUME $MODS_LOC
