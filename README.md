@@ -28,7 +28,7 @@ Argument Key | Default Value | Description
 
 ### Running
 
-The container requires 2 ports, `27015` and `27016` (or whatever you overrode them to in the build args).
+The container requires 2 ports, `27015` and `27016` over UDP (or whatever you overrode them to in the build args).
 
 The container takes several environment variables:
 
