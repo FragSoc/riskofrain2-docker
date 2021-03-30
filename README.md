@@ -1,5 +1,6 @@
 ![](https://britgamer.s3.eu-west-1.amazonaws.com/styles/full_width_image/s3/2020-03/risk-of-rain-2-banner.jpg)
 
+![Travis (.com)](https://img.shields.io/travis/com/FragSoc/riskofrain2-docker?style=flat-square)
 ![GitHub](https://img.shields.io/github/license/fragsoc/riskofrain2-docker?style=flat-square)
 
 ---
