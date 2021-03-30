@@ -7,6 +7,7 @@
 
 - command:
     argv:
-      - xvfb-run
-      - wine
+      - "xvfb-run"
+      - "-a"
+      - "wine"
       - "./Risk of Rain 2.exe"
