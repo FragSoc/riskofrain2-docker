@@ -43,4 +43,4 @@ COPY docker-entrypoint.rh /docker-entrypoint.rh
 # I/O
 EXPOSE $GAME_PORT/udp $STEAM_PORT/udp $GAME_PORT $STEAM_PORT
 WORKDIR $INSTALL_LOC
-ENTRYPOINT ["/docker-entrypoint.rh"]
+ENTRYPOINT ["rash", "/docker-entrypoint.rh"]
