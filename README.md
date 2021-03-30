@@ -1,18 +1,52 @@
-# Steam Dedicated Server Docker Template
+![](https://britgamer.s3.eu-west-1.amazonaws.com/styles/full_width_image/s3/2020-03/risk-of-rain-2-banner.jpg)
 
-A repo to save time setting up new docker images.
+![GitHub](https://img.shields.io/github/license/fragsoc/riskofrain2-docker?style=flat-square)
 
-## Template Usage
+---
 
-1. Create a new repo from this template (see [here](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template)).
-2. Run `sed -i -e 's/GAME_NAME/<name of your game, or an abbreviation>/g' Dockerfile`
-3. Go through the `Dockerfile` and address all the comments prepended with `REPO_SETUP:`
-4. Rewrite this `README` file
+# Usage
 
-## Build Args
+## Quickstart
 
-This template comes with four build arguments:
+```bash
+$ docker build -t fragsoc/riskofrain2 .
+$ docker run -p 27015:27105 -p 27016:27016 fragsoc/riskofrain2
+```
 
-- `APPID` for changing the steam appid, this might be desirable if your game has multiple distinct versions on steam
-- `UID` and `GID` for changing the user and group IDs of the user inside the container, they both default to `999`
-- `STEAM_BETAS` for specifying a steam beta string for the game, defaults to a blank string
+## Building
+
+The image takes several build args, passed with `--build-arg` to the `docker build` command:
+
+Argument Key | Default Value | Description
+---|---|---
+`APPID` | `1180760` | The steam appid to install, there's little reason to change this
+`STEAM_BETAS` | | A string to pass to `steamcmd` to download any beta versions of the game
+`UID` | `999` | The user ID to assign to the created user within the container
+`GID` | `999` | The group ID to assign to the created user's primary group within the container
+`GAME_PORT` | `27015` | The port to assign and expose for the game server
+`STEAM_PORT` | `27016` | The port to assign and expose for the steam service
+
+## Running
+
+The container requires 2 ports, `27015` and `27016` (or whatever you overrode them to in the build args).
+
+The container takes several environment variables:
+
+Variable Key | Default Value | Description
+---|---|---
+`GAME_NAME` | `A dockerised Risk of Rain 2 Server` | The name of the server to be displayed in the steam server list
+`GAME_PASSWORD` | `letmein` | The password to connect to the server
+`MAX_PLAYERS` | `4` | The maximum allowed number of players in the server
+
+# Modded Variant
+
+A variant of the server with [BepInExPack]() and [R2API]() is available by building using `bepapi.Dockerfile`.
+This variant comes with one volume, `/mods`, where you should place mod files in order to load them into the game.
+
+See the [Risk of Rain 2 Modding Wiki](https://github.com/risk-of-thunder/R2Wiki/wiki) for more information.
+
+# Licensing
+
+The few files in this repo are licensed under the AGPL3 license.
+However, Risk of Rain 2 and it's dedicated server are proprietary software licensed by [Hopoo Games](https://hopoogames.com/), no credit is taken for their software in this container.
+See the [ROR2 EULA](https://store.steampowered.com/eula/632360_eula_0) for more information.
