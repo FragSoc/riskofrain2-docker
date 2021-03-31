@@ -27,11 +27,24 @@ Argument Key | Default Value | Description
 `GAME_PORT` | `27015` | The port to assign and expose for the game server
 `STEAM_PORT` | `27016` | The port to assign and expose for the steam service
 
+There are several [docker subtargets](https://docs.docker.com/develop/develop-images/multistage-build/) you can select to use different modifications to the game. To select a target, add `--target=targetname` to your `docker build` command.
+
+Target Name | Description
+---|---
+`vanilla` | A vanilla installation of the server.
+`bepinex` | A server with only [BepInEx](https://github.com/BepInEx/BepInEx) installed. Takes an additional build argument, `BEPINEX_VERSION`.
+`r2api` | A server with BepInEx and [R2API](https://github.com/risk-of-thunder/R2API) installed. Takes the argument from `bepinex` and an additional build argument `R2API_VERSION`.
+`enigmaticthunder` | A server with BepInEx and [EnigmaticThunder](https://thunderstore.io/package/EnigmaDev/EnigmaticThunder/) installed. Takes the argument from `bepinex` and an additional argument `ENIGMATIC_THUNDER_VERSION`. **If you do not specify a target manually, this is the default version that will be built**.
+
+![BepInEx Version](https://img.shields.io/badge/BepInEx-5.3.1-blueviolet)
+![BepInEx Version](https://img.shields.io/badge/R2API-2.5.14-blueviolet)
+![BepInEx Version](https://img.shields.io/badge/EnigmaticThunder-0.1.1-blueviolet)
+
 ### Running
 
 The container requires 2 ports, `27015` and `27016` over UDP (or whatever you overrode them to in the build args).
 
-The container comes with one volume, `/mods`, where you should place mod files in order to load them into the game.
+The container comes with one volume, `/plugins`, where you should place mod files (`.dll`s) in order to load them into the game.
 See the [Risk of Rain 2 Modding Wiki](https://github.com/risk-of-thunder/R2Wiki/wiki) for more information.
 
 The container takes several environment variables:
@@ -43,10 +56,6 @@ Variable Key | Default Value | Description
 `MAX_PLAYERS` | `4` | The maximum allowed number of players in the server
 
 If you need more fine-grained control over the server configuration, you can bind mount over the `/server.cfg` file in the container, overriding anything you set with the environment vars.
-
-## Pure Vanilla Variant
-
-A variant of the server without modding APIs installed is available by targeting the `vanilla` stage (add `--target vanilla` to your `docker build` command).
 
 # Licensing
 
