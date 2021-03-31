@@ -39,6 +39,8 @@ Variable Key | Default Value | Description
 `GAME_PASSWORD` | `letmein` | The password to connect to the server
 `MAX_PLAYERS` | `4` | The maximum allowed number of players in the server
 
+If you need more fine-grained control over the server configuration, you can bind mount over the `/server.cfg` file in the container, overriding anything you set with the environment vars.
+
 ## Modded Variant
 
 A variant of the server with [BepInExPack]() and [R2API]() is available by building using `bepapi.Dockerfile`.
