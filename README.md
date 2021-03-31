@@ -11,6 +11,9 @@
 
 ---
 
+A [docker](https://www.docker.com/) image for running a dedicated server for the game [Risk of Rain 2](https://www.riskofrain.com/).
+Several modding frameworks can be optionally baked in.
+
 # Usage
 
 ### Quickstart
