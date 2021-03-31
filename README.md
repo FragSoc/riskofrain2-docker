@@ -4,9 +4,9 @@
   <a href="https://travis-ci.com/github/FragSoc/riskofrain2-docker"><img src="https://img.shields.io/travis/com/FragSoc/riskofrain2-docker?style=flat-square"/></a>
   <a href="https://github.com/FragSoc/riskofrain2-docker"><img src="https://img.shields.io/github/license/fragsoc/riskofrain2-docker?style=flat-square"/></a>
   </br>
-  ![BepInEx Version](https://img.shields.io/badge/BepInEx-5.3.1-blueviolet?style=flat-square)
-  ![R2API Version](https://img.shields.io/badge/R2API-2.5.14-blueviolet?style=flat-square)
-  ![EnigmaticThunder Version](https://img.shields.io/badge/EnigmaticThunder-0.1.1-blueviolet?style=flat-square)
+  <img src="https://img.shields.io/badge/BepInEx-5.3.1-blueviolet?style=flat-square"/>
+  <img src="https://img.shields.io/badge/R2API-2.5.14-blueviolet?style=flat-square"/>
+  <img src="https://img.shields.io/badge/EnigmaticThunder-0.1.1-blueviolet?style=flat-square"/>
 </div>
 
 ---
