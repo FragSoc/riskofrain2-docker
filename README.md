@@ -39,7 +39,7 @@ The container takes several environment variables:
 Variable Key | Default Value | Description
 ---|---|---
 `GAME_NAME` | `A dockerised Risk of Rain 2 Server` | The name of the server to be displayed in the steam server list
-`GAME_PASSWORD` | `letmein` | The password to connect to the server
+`GAME_PASSWORD` | `letmein` | The password to connect to the server, set to blank to disable
 `MAX_PLAYERS` | `4` | The maximum allowed number of players in the server
 
 If you need more fine-grained control over the server configuration, you can bind mount over the `/server.cfg` file in the container, overriding anything you set with the environment vars.
