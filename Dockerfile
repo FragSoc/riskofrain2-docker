@@ -7,17 +7,11 @@ WORKDIR /
 RUN apt-get update && \
     apt-get install -y wine-stable xvfb lib32gcc1
 
-ARG APPID=1180760
-ARG STEAM_BETAS
 ARG UID=999
 ARG GID=999
-ARG GAME_PORT=27015
-ARG STEAM_PORT=27016
 
 ENV INSTALL_LOC="/ror2"
 ENV HOME=${INSTALL_LOC}
-ENV GAME_PORT=${GAME_PORT}
-ENV STEAM_PORT=${STEAM_PORT}
 
 RUN mkdir -p $INSTALL_LOC && \
     groupadd -g $GID ror2 && \
@@ -29,6 +23,8 @@ RUN mkdir -p $INSTALL_LOC && \
 USER ror2
 
 # Install the ror2 server
+ARG APPID=1180760
+ARG STEAM_BETAS
 RUN steamcmd \
         +login anonymous \
         +force_install_dir $INSTALL_LOC \
@@ -42,8 +38,13 @@ COPY --from=rash /bin/rash /usr/bin/rash
 COPY server.cfg.j2 /server.cfg
 COPY docker-entrypoint.rh /docker-entrypoint.rh
 
-# I/O
+# Ports
+ARG GAME_PORT=27015
+ARG STEAM_PORT=27016
+ENV GAME_PORT=${GAME_PORT}
+ENV STEAM_PORT=${STEAM_PORT}
 EXPOSE $GAME_PORT/udp $STEAM_PORT/udp
+
 WORKDIR $INSTALL_LOC
 ENTRYPOINT ["rash", "/docker-entrypoint.rh"]
 
