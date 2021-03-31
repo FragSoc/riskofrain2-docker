@@ -19,8 +19,8 @@ Several modding frameworks can be optionally baked in.
 ### Quickstart
 
 ```bash
-$ docker build -t fragsoc/riskofrain2 .
-$ docker run -p 27015:27015/udp -p 27016:27016/udp fragsoc/riskofrain2
+docker build -t fragsoc/riskofrain2 https://github.com/FragSoc/riskofrain2-docker.git && \
+  docker run -p 27015:27015/udp -p 27016:27016/udp fragsoc/riskofrain2
 ```
 
 ### Building
