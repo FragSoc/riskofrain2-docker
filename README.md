@@ -1,7 +1,13 @@
-![](https://britgamer.s3.eu-west-1.amazonaws.com/styles/full_width_image/s3/2020-03/risk-of-rain-2-banner.jpg)
+![Risk of Rain 2 Banner](https://britgamer.s3.eu-west-1.amazonaws.com/styles/full_width_image/s3/2020-03/risk-of-rain-2-banner.jpg)
 
-<a href="https://travis-ci.com/github/FragSoc/riskofrain2-docker"><img src="https://img.shields.io/travis/com/FragSoc/riskofrain2-docker?style=flat-square"/></a>
-![GitHub](https://img.shields.io/github/license/fragsoc/riskofrain2-docker?style=flat-square)
+<div align="center">
+  <a href="https://travis-ci.com/github/FragSoc/riskofrain2-docker"><img src="https://img.shields.io/travis/com/FragSoc/riskofrain2-docker?style=flat-square"/></a>
+  <a href="https://github.com/FragSoc/riskofrain2-docker"><img src="https://img.shields.io/github/license/fragsoc/riskofrain2-docker?style=flat-square"/></a>
+  </br>
+  ![BepInEx Version](https://img.shields.io/badge/BepInEx-5.3.1-blueviolet?style=flat-square)
+  ![R2API Version](https://img.shields.io/badge/R2API-2.5.14-blueviolet?style=flat-square)
+  ![EnigmaticThunder Version](https://img.shields.io/badge/EnigmaticThunder-0.1.1-blueviolet?style=flat-square)
+</div>
 
 ---
 
@@ -28,10 +34,6 @@ Argument Key | Default Value | Description
 `STEAM_PORT` | `27016` | The port to assign and expose for the steam service
 
 #### Subtargets
-
-![BepInEx Version](https://img.shields.io/badge/BepInEx-5.3.1-blueviolet?style=flat-square)
-![BepInEx Version](https://img.shields.io/badge/R2API-2.5.14-blueviolet?style=flat-square)
-![BepInEx Version](https://img.shields.io/badge/EnigmaticThunder-0.1.1-blueviolet?style=flat-square)
 
 There are several [docker subtargets](https://docs.docker.com/develop/develop-images/multistage-build/) you can select to use different modifications to the game.
 To select a target, add `--target=targetname` to your `docker build` command.
