@@ -21,7 +21,7 @@ The image takes several build args, passed with `--build-arg` to the `docker bui
 Argument Key | Default Value | Description
 ---|---|---
 `APPID` | `1180760` | The steam appid to install, there's little reason to change this
-`STEAM_BETAS` | | A string to pass to `steamcmd` to download any beta versions of the game
+`STEAM_BETAS` | | A string to pass to `steamcmd` to download any beta versions of the game, eg. `-beta mybeta -betapassword letmein`
 `UID` | `999` | The user ID to assign to the created user within the container
 `GID` | `999` | The group ID to assign to the created user's primary group within the container
 `GAME_PORT` | `27015` | The port to assign and expose for the game server
