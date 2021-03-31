@@ -31,6 +31,9 @@ Argument Key | Default Value | Description
 
 The container requires 2 ports, `27015` and `27016` over UDP (or whatever you overrode them to in the build args).
 
+The container comes with one volume, `/mods`, where you should place mod files in order to load them into the game.
+See the [Risk of Rain 2 Modding Wiki](https://github.com/risk-of-thunder/R2Wiki/wiki) for more information.
+
 The container takes several environment variables:
 
 Variable Key | Default Value | Description
@@ -41,12 +44,9 @@ Variable Key | Default Value | Description
 
 If you need more fine-grained control over the server configuration, you can bind mount over the `/server.cfg` file in the container, overriding anything you set with the environment vars.
 
-## Modded Variant
+## Pure Vanilla Variant
 
-A variant of the server with [BepInExPack]() and [R2API]() is available by building using `bepapi.Dockerfile`.
-This variant comes with one volume, `/mods`, where you should place mod files in order to load them into the game.
-
-See the [Risk of Rain 2 Modding Wiki](https://github.com/risk-of-thunder/R2Wiki/wiki) for more information.
+A variant of the server without modding APIs installed is available by targeting the `vanilla` stage (add `--target vanilla` to your `docker build` command).
 
 # Licensing
 
