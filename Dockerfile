@@ -1,4 +1,4 @@
-FROM rustagainshell/rash AS rash
+FROM rustagainshell/rash:1.0.0 AS rash
 FROM steamcmd/steamcmd AS vanilla
 MAINTAINER Laura Demkowicz-Duffy <fragsoc@yusu.org>
 
