@@ -43,6 +43,8 @@ Target Name | Description
 `r2api` | A server with BepInEx and [R2API](https://github.com/risk-of-thunder/R2API) installed. Takes the argument from `bepinex` and an additional build argument `R2API_VERSION`.
 `enigmaticthunder` | A server with BepInEx and [EnigmaticThunder](https://thunderstore.io/package/EnigmaDev/EnigmaticThunder/) installed. Takes the argument from `bepinex` and an additional argument `ENIGMATIC_THUNDER_VERSION`. **If you do not specify a target manually, this is the default version that will be built**.
 
+If the `*_VERION` args are omitted, they will default to the versions shown in the badges above.
+
 ### Running
 
 The container requires 2 ports, `27015` and `27016` over UDP (or whatever you overrode them to in the build args).
