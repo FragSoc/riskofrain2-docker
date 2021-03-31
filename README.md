@@ -27,7 +27,14 @@ Argument Key | Default Value | Description
 `GAME_PORT` | `27015` | The port to assign and expose for the game server
 `STEAM_PORT` | `27016` | The port to assign and expose for the steam service
 
-There are several [docker subtargets](https://docs.docker.com/develop/develop-images/multistage-build/) you can select to use different modifications to the game. To select a target, add `--target=targetname` to your `docker build` command.
+#### Subtargets
+
+![BepInEx Version](https://img.shields.io/badge/BepInEx-5.3.1-blueviolet?style=flat-square)
+![BepInEx Version](https://img.shields.io/badge/R2API-2.5.14-blueviolet?style=flat-square)
+![BepInEx Version](https://img.shields.io/badge/EnigmaticThunder-0.1.1-blueviolet?style=flat-square)
+
+There are several [docker subtargets](https://docs.docker.com/develop/develop-images/multistage-build/) you can select to use different modifications to the game.
+To select a target, add `--target=targetname` to your `docker build` command.
 
 Target Name | Description
 ---|---
@@ -35,10 +42,6 @@ Target Name | Description
 `bepinex` | A server with only [BepInEx](https://github.com/BepInEx/BepInEx) installed. Takes an additional build argument, `BEPINEX_VERSION`.
 `r2api` | A server with BepInEx and [R2API](https://github.com/risk-of-thunder/R2API) installed. Takes the argument from `bepinex` and an additional build argument `R2API_VERSION`.
 `enigmaticthunder` | A server with BepInEx and [EnigmaticThunder](https://thunderstore.io/package/EnigmaDev/EnigmaticThunder/) installed. Takes the argument from `bepinex` and an additional argument `ENIGMATIC_THUNDER_VERSION`. **If you do not specify a target manually, this is the default version that will be built**.
-
-![BepInEx Version](https://img.shields.io/badge/BepInEx-5.3.1-blueviolet)
-![BepInEx Version](https://img.shields.io/badge/R2API-2.5.14-blueviolet)
-![BepInEx Version](https://img.shields.io/badge/EnigmaticThunder-0.1.1-blueviolet)
 
 ### Running
 
