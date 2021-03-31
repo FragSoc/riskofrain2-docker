@@ -11,7 +11,7 @@
 
 ```bash
 $ docker build -t fragsoc/riskofrain2 .
-$ docker run -p 27015:27105/udp -p 27016:27016/udp fragsoc/riskofrain2
+$ docker run -p 27015:27015/udp -p 27016:27016/udp fragsoc/riskofrain2
 ```
 
 ### Building
