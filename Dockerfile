@@ -25,6 +25,7 @@ USER ror2
 # Install the ror2 server
 ARG APPID=1180760
 ARG STEAM_BETAS
+ARG STEAM_EPOCH
 RUN steamcmd \
         +login anonymous \
         +force_install_dir $INSTALL_LOC \
