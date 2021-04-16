@@ -6,6 +6,7 @@
     dest: "/ror2/Risk of Rain 2_Data/Config/server.cfg"
 
 - command:
+    transfer_pid_1: true
     argv:
       - "xvfb-run"
       - "-a"
