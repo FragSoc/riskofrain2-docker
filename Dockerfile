@@ -1,11 +1,12 @@
 FROM rustagainshell/rash:1.0.0 AS rash
-FROM steamcmd/steamcmd AS vanilla
+FROM fragsoc/steamcmd-wine-xvfb AS vanilla
 MAINTAINER Laura Demkowicz-Duffy <fragsoc@yusu.org>
 
 USER root
 WORKDIR /
-RUN apt-get update && \
-    apt-get install -y wine-stable xvfb lib32gcc1
+RUN DEBIAN_FRONTEND=noninteractive \
+    apt-get update && \
+    apt-get install -y lib32gcc1
 
 ARG UID=999
 ARG GID=999
