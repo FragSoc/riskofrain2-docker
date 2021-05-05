@@ -31,7 +31,7 @@ Argument Key | Default Value | Description
 ---|---|---
 `APPID` | `1180760` | The steam appid to install, there's little reason to change this
 `STEAM_BETAS` | | A string to pass to `steamcmd` to download any beta versions of the game, eg. `-beta mybeta -betapassword letmein`
-`STEAM_EPOCH` | | Used to rebuild the image when a new version is released, retaining the cached `apt` packages etc. value itself is ignored. When you want to rebuild the image for the latest version of the game, use any unique value (the current timestamp is a good idea).
+`STEAM_EPOCH` | | Used to rebuild the image when a new game version is released, retaining the cached `apt` packages etc. Value itself is ignored. When you want to rebuild the image for the latest version of the game, use any unique value (the current timestamp is a good idea).
 `UID` | `999` | The user ID to assign to the created user within the container
 `GID` | `999` | The group ID to assign to the created user's primary group within the container
 `GAME_PORT` | `27015` | The port to assign and expose for the game server
