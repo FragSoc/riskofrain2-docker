@@ -8,7 +8,9 @@
 - command:
     transfer_pid_1: true
     argv:
+      - "tini"
+      - "--"
       - "xvfb-run"
       - "-a"
-      - "wine"
+      - "wine-stable"
       - "./Risk of Rain 2.exe"
