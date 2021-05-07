@@ -1,6 +1,6 @@
-![Risk of Rain 2 Banner](https://www.riskofrain.com/wp-content/uploads/2019/04/ror2_logo_512-1.png)
-
 <div align="center">
+  <img alt="Risk of Rain 2 Banner" src="https://www.riskofrain.com/wp-content/uploads/2019/04/ror2_logo_512-1.png"/>
+  </br>
   <a href="https://travis-ci.com/github/FragSoc/riskofrain2-docker"><img src="https://img.shields.io/travis/com/FragSoc/riskofrain2-docker?style=flat-square"/></a>
   <a href="https://github.com/FragSoc/riskofrain2-docker"><img src="https://img.shields.io/github/license/fragsoc/riskofrain2-docker?style=flat-square"/></a>
   </br>
