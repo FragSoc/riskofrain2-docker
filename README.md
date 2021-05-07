@@ -1,4 +1,4 @@
-![Risk of Rain 2 Banner](https://britgamer.s3.eu-west-1.amazonaws.com/styles/full_width_image/s3/2020-03/risk-of-rain-2-banner.jpg)
+![Risk of Rain 2 Banner](https://www.riskofrain.com/wp-content/uploads/2019/04/ror2_logo_512-1.png)
 
 <div align="center">
   <a href="https://travis-ci.com/github/FragSoc/riskofrain2-docker"><img src="https://img.shields.io/travis/com/FragSoc/riskofrain2-docker?style=flat-square"/></a>
