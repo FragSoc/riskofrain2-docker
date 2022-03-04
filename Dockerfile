@@ -1,5 +1,6 @@
 FROM rustagainshell/rash:1.0.0 AS rash
-FROM fragsoc/steamcmd-wine-xvfb AS vanilla
+ARG BASE_IMAGE=fragsoc/steamcmd-wine-xvfb
+FROM ${BASE_IMAGE} AS vanilla
 MAINTAINER Laura Demkowicz-Duffy <fragsoc@yusu.org>
 
 USER root
