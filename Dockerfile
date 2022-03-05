@@ -29,8 +29,8 @@ ARG APPID=1180760
 ARG STEAM_BETAS
 ARG STEAM_EPOCH
 RUN steamcmd \
-        +login anonymous \
         +force_install_dir $INSTALL_LOC \
+        +login anonymous \
         +@sSteamCmdForcePlatformType windows \
         +app_update $APPID $STEAM_BETAS validate \
         +app_update 1007 validate \
@@ -57,9 +57,9 @@ FROM debian:stretch-slim AS curl
 RUN apt-get update && \
     apt-get install -y unzip curl
 
-ARG BEPINEX_VERSION=5.3.1
-ARG ENIGMATIC_THUNDER_VERSION=0.1.1
-ARG R2API_VERSION=2.5.14
+ARG BEPINEX_VERSION=5.4.1801
+ARG ENIGMATIC_THUNDER_VERSION=0.1.5
+ARG R2API_VERSION=3.0.71
 
 WORKDIR /tmp
 RUN curl -L -o ./r2api.zip \
