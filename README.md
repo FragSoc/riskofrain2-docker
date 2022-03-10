@@ -76,7 +76,7 @@ The game should recursively find mods in the folder.
 
 If you need even finer-grained control over your mod structure, mount over the `/ror2/BepInEx/plugins` folder inside the container
 
-> Note that **this will override the `enigmaticthunder` and `r2api` targets' content; it will be as if you used the `bepinex` target.
+> Note that **this will override the `enigmaticthunder` and `r2api` targets' content; it will be as if you used the `bepinex` target.**
 > If you need those tools, either use those targets, or use this method and put them in the folder you've mounted in.
 
 See the [Risk of Rain 2 Modding Wiki](https://github.com/risk-of-thunder/R2Wiki/wiki) for more information.
