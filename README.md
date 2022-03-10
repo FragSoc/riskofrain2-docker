@@ -30,8 +30,8 @@ The image takes several build args, passed with `--build-arg` to the `docker bui
 Argument Key | Default Value | Description
 ---|---|---
 `APPID` | `1180760` | The steam appid to install, there's little reason to change this
-`STEAM_BETAS` | | A string to pass to `steamcmd` to download any beta versions of the game, eg. `-beta mybeta -betapassword letmein`
-`STEAM_EPOCH` | | Used to rebuild the image when a new game version is released, retaining the cached `apt` packages etc. Value itself is ignored. When you want to rebuild the image for the latest version of the game, use any unique value (the current timestamp is a good idea).
+`STEAM_BETAS` | (Blank) | A string to pass to `steamcmd` to download any beta versions of the game, eg. `-beta mybeta -betapassword letmein`
+`STEAM_EPOCH` | (Blank) | Used to rebuild the image when a new game version is released, retaining the cached `apt` packages etc. Value itself is ignored. When you want to rebuild the image for the latest version of the game, use any unique value (the current timestamp is a good idea).
 `UID` | `999` | The user ID to assign to the created user within the container
 `GID` | `999` | The group ID to assign to the created user's primary group within the container
 `GAME_PORT` | `27015` | The port to assign and expose for the game server
@@ -55,9 +55,6 @@ If the `*_VERION` args are omitted, they will default to the versions shown in t
 
 The container requires 2 ports, `27015` and `27016` over UDP (or whatever you overrode them to in the build args).
 
-The container comes with one volume, `/plugins`, where you should place mod files (`.dll`s) in order to load them into the game.
-See the [Risk of Rain 2 Modding Wiki](https://github.com/risk-of-thunder/R2Wiki/wiki) for more information.
-
 The container takes several environment variables:
 
 Variable Key | Default Value | Description
@@ -67,6 +64,22 @@ Variable Key | Default Value | Description
 `MAX_PLAYERS` | `4` | The maximum allowed number of players in the server
 
 If you need more fine-grained control over the server configuration, you can bind mount over the `/server.cfg` file in the container, overriding anything you set with the environment vars.
+
+#### Modding
+
+> **Note**: you must use one of the modloader-enabled build targets for mods.
+> See above.
+
+The container comes with one volume, `/plugins`, where you should place mod files (`.dll`s) in order to load them into the game.
+We suggest bind-mounting over this if you want to control your mods' directory structure yourself; it's symlinked as a subdirectory of the `BepInEx/plugins` directory in the root game folder.
+The game should recursively find mods in the folder.
+
+If you need even finer-grained control over your mod structure, mount over the `/ror2/BepInEx/plugins` folder inside the container
+
+> Note that **this will override the `enigmaticthunder` and `r2api` targets' content; it will be as if you used the `bepinex` target.
+> If you need those tools, either use those targets, or use this method and put them in the folder you've mounted in.
+
+See the [Risk of Rain 2 Modding Wiki](https://github.com/risk-of-thunder/R2Wiki/wiki) for more information.
 
 # Licensing
 
