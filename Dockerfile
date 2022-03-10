@@ -77,18 +77,21 @@ RUN mkdir -p bepinexpack r2api engimaticthunder && \
 FROM vanilla AS bepinex
 
 ENV MODS_LOC="/plugins"
+ENV MODS_CONFIG_LOC="/plugin_config"
 
 USER root
-RUN mkdir -p $MODS_LOC && \
-    chown -R ror2:ror2 $MODS_LOC
+RUN mkdir -p $MODS_LOC $MODS_CONFIG_LOC && \
+    chown -R ror2:ror2 $MODS_LOC $MODS_CONFIG_LOC
 
 USER ror2
 COPY --from=curl --chown=ror2 /tmp/bepinex/BepInExPack/BepInEx $INSTALL_LOC/BepInEx
 COPY --from=curl --chown=ror2 /tmp/bepinex/BepInExPack/doorstop_config.ini $INSTALL_LOC
 COPY --from=curl --chown=ror2 /tmp/bepinex/BepInExPack/winhttp.dll $INSTALL_LOC
 RUN ln -s $MODS_LOC $INSTALL_LOC/BepInEx/plugins/rootmods
+RUN ln -s $MODS_CONFIG_LOC $INSTALL_LOC/BepInEx/config
 
 VOLUME $MODS_LOC
+VOLUME $MODS_CONFIG_LOG
 
 # R2API + BepInEx
 FROM bepinex AS r2api

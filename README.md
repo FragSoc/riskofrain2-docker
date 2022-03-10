@@ -70,14 +70,19 @@ If you need more fine-grained control over the server configuration, you can bin
 > **Note**: you must use one of the modloader-enabled build targets for mods.
 > See above.
 
-The container comes with one volume, `/plugins`, where you should place mod files (`.dll`s) in order to load them into the game.
-We suggest bind-mounting over this if you want to control your mods' directory structure yourself; it's symlinked as a subdirectory of the `BepInEx/plugins` directory in the root game folder.
-The game should recursively find mods in the folder.
+The container comes with two volumes for mods:
 
-If you need even finer-grained control over your mod structure, mount over the `/ror2/BepInEx/plugins` folder inside the container
+Path | Equivalent Client Path | Purpose
+---|---|---
+`/plugins` | `BepInEx/plugins/rootmods` | mod files, `.dll`s etc; this is a subfolder as to not override the modloader's files. The game should find files here recursively.
+`/plugin_config` | `BepInEx/config` | mod config files
 
-> Note that **this will override the `enigmaticthunder` and `r2api` targets' content; it will be as if you used the `bepinex` target.**
-> If you need those tools, either use those targets, or use this method and put them in the folder you've mounted in.
+We suggest bind-mounting over these directories to manage your mods, but they are declared as volumes for convenience.
+
+If you need even finer-grained control over your mod structure, you can mount over the `/ror2/BepInEx/plugins` or `/ror2/BepInEx` folders inside the container
+
+> Note that this may **override the content automatically installed by the image** depending which you mount over.
+> If you need these tools, we suggest using the provided targets, but if you use the above method then you'll need to install the tools manually.
 
 See the [Risk of Rain 2 Modding Wiki](https://github.com/risk-of-thunder/R2Wiki/wiki) for more information.
 
