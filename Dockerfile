@@ -24,18 +24,6 @@ RUN mkdir -p $INSTALL_LOC && \
 
 USER ror2
 
-# Install the ror2 server
-ARG APPID=1180760
-ARG STEAM_BETAS
-ARG STEAM_EPOCH
-RUN steamcmd \
-        +force_install_dir $INSTALL_LOC \
-        +login anonymous \
-        +@sSteamCmdForcePlatformType windows \
-        +app_update $APPID $STEAM_BETAS validate \
-        +app_update 1007 validate \
-        +quit
-
 # Config setup
 COPY --from=rash /bin/rash /usr/bin/rash
 COPY server.cfg.j2 /server.cfg
@@ -47,6 +35,19 @@ ARG STEAM_PORT=27016
 ENV GAME_PORT=${GAME_PORT}
 ENV STEAM_PORT=${STEAM_PORT}
 EXPOSE $GAME_PORT/udp $STEAM_PORT/udp
+
+# Install the ror2 server
+# (we do this late to take maximum advantage of caching)
+ARG APPID=1180760
+ARG STEAM_BETAS
+ARG STEAM_EPOCH
+RUN steamcmd \
+        +force_install_dir $INSTALL_LOC \
+        +login anonymous \
+        +@sSteamCmdForcePlatformType windows \
+        +app_update $APPID $STEAM_BETAS validate \
+        +app_update 1007 validate \
+        +quit
 
 WORKDIR $INSTALL_LOC
 ENTRYPOINT ["rash", "/docker-entrypoint.rh"]
