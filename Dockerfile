@@ -55,8 +55,6 @@ ENTRYPOINT ["rash", "/docker-entrypoint.rh"]
 # Temporary container to download mod files with curl and unzip them
 FROM debian:stretch-slim AS curl
 
-RUN apt-get update
-RUN apt-get upgrade -y
 RUN apt-get install -y unzip curl
 
 ARG BEPINEX_VERSION=5.4.1801
