@@ -56,7 +56,7 @@ ENTRYPOINT ["rash", "/docker-entrypoint.rh"]
 FROM debian:stretch-slim AS curl
 
 RUN apt update && \
-    apt upgrade -y
+    apt upgrade -y && \
     apt install -y unzip curl
 
 ARG BEPINEX_VERSION=5.4.1801
